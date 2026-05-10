@@ -23,3 +23,12 @@ def find_project_by_id(project_id):
         if project.get("id") == project_id:
             return project
     return None
+
+# Cache for loaded projects
+_projects_cache = None
+
+
+def clear_cache():
+    """Reset the in-memory project cache."""
+    global _projects_cache
+    _projects_cache = None
