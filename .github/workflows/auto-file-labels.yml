@@ -1,21 +1,24 @@
 name: Label PRs Based on Files
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 permissions:
   contents: read
   pull-requests: write
+  issues: write
 
 jobs:
   labeler:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Label PRs
+      - name: Label PRs automatically
         uses: actions/labeler@v5
+
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"

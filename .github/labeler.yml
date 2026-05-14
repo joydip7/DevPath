@@ -8,8 +8,9 @@ documentation:
   - changed-files:
       - any-glob-to-any-file:
           - "README.md"
-          - "docs/**"
           - "CONTRIBUTING.md"
+          - "CODE_OF_CONDUCT.md"
+          - "docs/**"
 
 data:
   - changed-files:
@@ -20,3 +21,19 @@ type:testing:
   - changed-files:
       - any-glob-to-any-file:
           - "tests/**"
+
+type:accessibility:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "templates/**"
+          - "static/**"
+
+type:performance:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "utils/**"
+
+type:security:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "utils/**"
