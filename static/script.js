@@ -80,11 +80,19 @@ if (isIndexPage) {
     }
   });
 
-  // Add skill on quick-pick chip click
+  // Add/toggle skill on quick-pick chip click
   quickPickChips.forEach(function (chip) {
     chip.addEventListener("click", function () {
-      addSkill(chip.getAttribute("data-skill"));
-      chip.classList.add("active");
+      var skill = chip.getAttribute("data-skill");
+      var isAlreadySelected = selectedSkills.some(function (s) {
+        return s.toLowerCase() === skill.toLowerCase();
+      });
+
+      if (isAlreadySelected) {
+        removeSkill(skill);
+      } else {
+        addSkill(skill);
+      }
     });
   });
 
@@ -108,16 +116,25 @@ if (isIndexPage) {
     renderSelectedChips();
     syncSkillsHiddenInput();
     clearFieldError("skills-error");
+
+    // Highlight the quick-pick button if it matches the added skill
+    quickPickChips.forEach(function (chip) {
+      if (chip.getAttribute("data-skill").toLowerCase() === skill.toLowerCase()) {
+        chip.classList.add("active");
+      }
+    });
   }
 
   function removeSkill(skill) {
-    selectedSkills = selectedSkills.filter(function (s) { return s !== skill; });
+    selectedSkills = selectedSkills.filter(function (s) {
+      return s.toLowerCase() !== skill.toLowerCase();
+    });
     renderSelectedChips();
     syncSkillsHiddenInput();
 
     // Un-highlight the quick-pick button if it matches the removed skill
     quickPickChips.forEach(function (chip) {
-      if (chip.getAttribute("data-skill") === skill) {
+      if (chip.getAttribute("data-skill").toLowerCase() === skill.toLowerCase()) {
         chip.classList.remove("active");
       }
     });
