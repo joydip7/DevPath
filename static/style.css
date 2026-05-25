@@ -1205,31 +1205,47 @@ label {
 .skill-chip-selected {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--indigo-700);
-  background: var(--indigo-100);
-  border: 1px solid rgba(79, 110, 247, 0.2);
+  color: var(--white);
+  background: var(--indigo-700);
+  border: 1.5px solid var(--indigo-700);
   border-radius: var(--r-full);
-  padding: 3px 10px 3px 12px;
+  padding: 4px 10px 4px 14px;
+  transition: all var(--t);
+  box-shadow: var(--shadow-xs);
+}
+
+.skill-chip-selected:hover {
+  background: var(--indigo-800);
+  border-color: var(--indigo-800);
+  transform: translateY(-1px);
 }
 
 .skill-chip-remove {
-  background: none;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
+  border-radius: 50%;
   cursor: pointer;
-  color: var(--indigo-500);
-  font-size: 1rem;
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: bold;
   line-height: 1;
-  padding: 0;
-  display: flex;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
   align-items: center;
-  transition: color var(--t);
+  justify-content: center;
+  transition: all var(--t);
+  margin-left: 2px;
+  padding: 0;
 }
 
 .skill-chip-remove:hover {
-  color: var(--red-500);
+  background: var(--red-500);
+  color: var(--white);
+  transform: scale(1.1);
 }
 
 /* Text input inside the skill wrap */
